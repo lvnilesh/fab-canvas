@@ -1,0 +1,38 @@
+<VirtualHost *:80>
+  ServerName canvas.nescorp.us
+  ServerAlias canvas.nescorp.us 
+  ServerAdmin lvnilesh@yahoo.com
+  DocumentRoot /var/rails/canvas/public
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteCond %{REQUEST_URI} !^/health_check
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]  
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_access.log combined
+  SetEnv GEM_HOME /home/nilesh/gems
+  <Directory /var/rails/canvas/public>
+    Allow from all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
+<VirtualHost *:443>
+  ServerName canvas.nescorp.us
+  ServerAlias canvas.nescorp.us
+  ServerAdmin lvnilesh@yahoo.com
+  DocumentRoot /var/rails/canvas/public
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_ssl_access.log combined
+  SSLEngine on
+  BrowserMatch "MSIE [2-6]" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+  BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+  # the following ssl certificate files are generated for you from the ssl-cert package.
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
+  SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+  SetEnv GEM_HOME /home/nilesh/gems
+  <Directory /var/rails/canvas/public>
+    Allow from all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
