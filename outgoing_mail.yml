@@ -1,0 +1,28 @@
+development:
+  address: "smtp.example.com"
+  port: "25"
+  user_name: "user"
+  password: "password"
+  authentication: "plain" # plain, login, or cram_md5
+  domain: "example.com"
+  outgoing_address: "canvas@example.com"
+  default_name: "Your Name"
+
+# or to use sendmail --
+#
+# development:
+#   delivery_method: "sendmail"
+
+test:
+  delivery_method: "test"
+
+production:
+  address: "smtp.gmail.com"
+  port: "587"
+  user_name: "you@gmail.com"
+  password: "gmail-password"
+  authentication: "plain" # plain, login, or cram_md5
+  domain: "gmail.com"
+  outgoing_address: "you@gmail.com"
+  default_name: "Your Name"
+  tls: true
