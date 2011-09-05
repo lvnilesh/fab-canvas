@@ -1,10 +1,10 @@
 #!/bin/sh
 # This is a comment
-mysql -t --user=root --password=THIS-IS-A-VERY-SECURE-PASSWORD <<STOP
+mysql -t --user=root --password=THIS-IS-A-VERY-SECURE-ROOT-PASSWORD <<STOP
 -- This is a comment inside an sql-command-stream.
 create database canvas_production;
 create database canvas_queue_production;
-create user 'canvas'@'localhost' identified by 'THIS-IS-A-VERY-SECURE-PASSWORD';
+create user 'canvas'@'localhost' identified by 'THIS-IS-A-VERY-SECURE-CANVAS-PASSWORD';
 grant all privileges on canvas_production.* to 'canvas'@'localhost' with grant option;
 grant all privileges on canvas_queue_production.* to 'canvas'@'localhost' with grant option;
 \q
