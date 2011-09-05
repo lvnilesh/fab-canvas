@@ -40,7 +40,7 @@ production:
   database: canvas_production
   host: localhost
   username: canvas
-  password: THIS-IS-A-VERY-SECURE-PASSWORD
+  password: THIS-IS-A-VERY-SECURE-CANVAS-PASSWORD
   timeout: 5000
   queue:
     adapter: mysql
@@ -48,5 +48,5 @@ production:
     database: canvas_queue_production
     host: localhost
     username: canvas
-    password: THIS-IS-A-VERY-SECURE-PASSWORD
+    password: THIS-IS-A-VERY-SECURE-CANVAS-PASSWORD
     timeout: 5000
