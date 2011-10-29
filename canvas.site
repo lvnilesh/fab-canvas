@@ -1,12 +1,12 @@
 <VirtualHost *:80>
   ServerName canvas.nescorp.us
-  ServerAlias canvas.nescorp.us 
+  ServerAlias canvas.nescorp.us
   ServerAdmin lvnilesh@yahoo.com
   DocumentRoot /var/rails/canvas/public
   RewriteEngine On
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteCond %{REQUEST_URI} !^/health_check
-  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]  
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
   ErrorLog /var/log/apache2/canvas_errors.log
   LogLevel warn
   CustomLog /var/log/apache2/canvas_access.log combined
